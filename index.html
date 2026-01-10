@@ -7,8 +7,6 @@
     <title>CSV数据可视化应用</title>
     <link rel="stylesheet" href="style.css">
     <script src="lib/chart.min.js"></script>
-    <script src="lib/html2canvas.min.js"></script>
-    <script src="lib/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -20,22 +18,18 @@
             <!-- 左侧菜单和统计信息 -->
             <aside class="sidebar">
                 <nav class="main-menu">
-                    <div class="menu-item">
-                        <label for="fileInput" class="menu-button btn-import">导入文件</label>
-                        <input type="file" id="fileInput" accept=".csv" style="display: none;">
+                    <div class="button-container">
+                        <div class="menu-item">
+                            <label for="fileInput" class="menu-button btn-import">导入文件</label>
+                            <input type="file" id="fileInput" accept=".csv,text/csv,application/csv,text/comma-separated-values,application/vnd.ms-excel" style="display: none;">
+                        </div>
+                        <div class="menu-item">
+                            <button id="clearBtn" class="menu-button btn-clear">清空重置</button>
+                        </div>
                     </div>
                     <div class="menu-item">
                         <label for="holeNumber" class="menu-label">孔号:</label>
                         <select id="holeNumber" class="menu-select"></select>
-                    </div>
-                    <div class="menu-item">
-                        <button id="exportImageBtn" class="menu-button btn-export-image">导出图片</button>
-                    </div>
-                    <div class="menu-item">
-                        <button id="exportPdfBtn" class="menu-button btn-export-pdf">导出PDF</button>
-                    </div>
-                    <div class="menu-item">
-                        <button id="clearBtn" class="menu-button btn-clear">清空重置</button>
                     </div>
                 </nav>
 
