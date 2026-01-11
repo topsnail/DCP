@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSV数据可视化应用</title>
     <link rel="stylesheet" href="style.css">
-    <script src="lib/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -25,6 +26,9 @@
                         </div>
                         <div class="menu-item">
                             <button id="clearBtn" class="menu-button btn-clear">清空重置</button>
+                        </div>
+                        <div class="menu-item">
+                            <button id="exportBtn" class="menu-button btn-export">导出数据</button>
                         </div>
                     </div>
                     <div class="menu-item">
@@ -93,6 +97,6 @@
     <!-- 返回顶部按钮 -->
     <button id="backToTopBtn" class="back-to-top" title="返回顶部">↑</button>
 
-    <script src="lib/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
