@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%22 y=%22.9em%22 font-size=%2285%22 text-anchor=%22middle%22>🔩</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV可视化应用</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- SheetJS库 -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@latest/dist/xlsx.full.min.js"></script>
+    <!-- Papa Parse库 -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@latest/papaparse.min.js"></script>
+    <!-- Chart.js库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.min.js"></script>
+    <!-- html2canvas库 -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@latest/dist/html2canvas.min.js"></script>
+    <!-- math.js库 -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@latest"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 加载状态指示器 -->
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">加载中...</div>
+        </div>
+        
+        <!-- Toast通知 -->
+        <div class="toast" id="toast" style="display: none;">
+            <div class="toast-message" id="toastMessage"></div>
+        </div>
+        
+        <div class="page-layout">
+            <!-- 左侧区域 -->
+            <div class="left-section">
+                <!-- 上传区域容器 -->
+                <div class="section-container upload-container">
+                    <div class="upload-section">
+                        <h3>文件操作</h3>
+                        <div class="upload-buttons">
+                            <button id="importButton">导入数据</button>
+                            <button id="resetButton">清空重置</button>
+                            <button id="exportImageButton">导出为图片</button>
+                            <button id="exportExcelButton">导出为Excel</button>  
+                        </div>
+                        <input type="file" id="fileInput" accept=".csv,.xlsx" multiple style="display: none;">
+                    </div>
+                </div>
+                
+                <!-- 孔号选择区域容器 -->
+                <div class="section-container hole-container" id="holeSelector" style="display: none;">
+                    <div class="hole-selector">
+                        <h3>孔号选择</h3>
+                        <div class="hole-buttons" id="holeButtons"></div>
+                    </div>
+                </div>
+                
+                <!-- 数据统计区域容器 -->
+                <div class="section-container calculate-container" id="calculateSection" style="display: none;">
+                    <div class="calculate-section">
+                        <h3>数据统计</h3>
+                        <div class="calculate-result" id="calculateResult"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧区域 -->
+            <div class="right-section">
+                <!-- 图表生成区域容器 -->
+                <div class="section-container chart-container-wrapper" id="chartSection" style="display: none;">
+                    <div class="chart-section">
+                        <h3>折线图</h3>
+                        <div class="chart-container">
+                            <canvas id="chartCanvas"></canvas>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- 数据预览区域容器 -->
+                <div class="section-container preview-container" id="previewSection" style="display: none;">
+                    <div class="preview-section">
+                        <h3>数据浏览</h3>
+                        <div class="data-preview">
+                            <table id="dataTable"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

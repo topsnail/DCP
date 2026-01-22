@@ -1,0 +1,577 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 加载状态指示器样式 */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border-radius: 8px;
+}
+
+.loading-spinner {
+    border: 4px solid rgba(52, 152, 219, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+.loading-text {
+    color: #3498db;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Toast通知样式 */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    max-width: 300px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast.success {
+    background-color: #27ae60;
+}
+
+.toast.error {
+    background-color: #e74c3c;
+}
+
+.toast.warning {
+    background-color: #f39c12;
+}
+
+.toast-message {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    min-height: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f5e6;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.header-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: #3498db;
+}
+
+/* 左右布局样式 */
+.page-layout {
+    display: flex;
+    gap: 10px;
+    height: 100%;
+}
+
+.left-section {
+    flex: 0 0 30%;
+    min-width: 250px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 15px;
+}
+
+.right-section {
+    flex: 1;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 800px;
+    padding-top: 15px;
+}
+
+/* 区域容器样式 */
+.section-container {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: #3498db;
+}
+
+/* 左侧区域容器特殊样式 */
+.left-section .section-container {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/* 右侧区域容器特殊样式 */
+.right-section .section-container {
+    margin-bottom: 0;
+}
+
+/* 图表容器特殊样式 */
+.chart-container-wrapper {
+    flex: 0 0 400px;
+    max-height: 500px;
+}
+
+/* 数据预览容器特殊样式 */
+.preview-container {
+    flex: 1;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 标题样式 */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #34495e;
+    margin: 6px 0 6px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #3498db;
+}
+
+/* 上传区域样式 */
+.upload-section {
+}
+
+
+
+#fileInput {
+    display: none;
+}
+
+.upload-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.upload-buttons button {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1;
+    min-width: 100px;
+    max-width: 150px;
+}
+
+.upload-buttons button:hover {
+    background-color: #2980b9;
+}
+
+/* 孔号选择区域样式 */
+.hole-selector {
+}
+
+.hole-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hole-buttons button {
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 13px;
+}
+
+.hole-buttons button:hover {
+    background-color: #2980b9;
+}
+
+.hole-buttons button.active {
+    background-color: #27ae60;
+}
+
+/* 手机端适配 */
+@media screen and (max-width: 768px) {
+    .upload-buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+    }
+    
+    .upload-buttons button {
+        padding: 6px 10px;
+        font-size: 11px;
+        min-width: unset;
+        max-width: unset;
+        flex: unset;
+    }
+    
+    .hole-buttons {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 4px;
+    }
+    
+    .hole-buttons button {
+        padding: 4px 6px;
+        font-size: 10px;
+        text-align: center;
+    }
+    
+    /* 表格适配 - 无横向滚动条 */
+    .data-preview {
+        overflow-x: hidden;
+    }
+    
+    #dataTable {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    #dataTable th,
+    #dataTable td {
+        min-width: unset;
+        max-width: 80px;
+        font-size: 12px;
+        padding: 3px 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* 为日期列设置宽度 */
+    #dataTable th:first-child,
+    #dataTable td:first-child {
+        max-width: 100px;
+        text-align: right;
+        font-size: 11px;
+        direction: rtl;
+    }
+    
+    /* 为时间列设置更大的宽度 */
+    #dataTable th:nth-child(2),
+    #dataTable td:nth-child(2) {
+        max-width: 140px;
+        text-align: right;
+        font-size: 11px;
+        direction: rtl;
+    }
+    
+    /* 为第3、4、5列设置更小的宽度 */
+    #dataTable th:nth-child(3),
+    #dataTable td:nth-child(3),
+    #dataTable th:nth-child(4),
+    #dataTable td:nth-child(4),
+    #dataTable th:nth-child(5),
+    #dataTable td:nth-child(5) {
+        max-width: 18px;
+        font-size: 10px;
+        padding: 3px 2px;
+        direction: ltr;
+    }
+    
+    /* 为其他列设置更小的宽度 */
+    #dataTable th:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(:nth-child(5)),
+    #dataTable td:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(:nth-child(5)) {
+        max-width: 50px;
+        font-size: 11px;
+        direction: ltr;
+    }
+    
+    /* 图表容器适配 */
+    .chart-container-wrapper {
+        flex: 0 0 450px;
+        max-height: 450px;
+    }
+    
+    .chart-container {
+        height: 100%;
+        padding-bottom: 20px;
+    }
+}
+
+/* 数据预览区域样式 */
+.preview-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.data-preview {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+}
+
+#dataTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#dataTable th,
+#dataTable td {
+    padding: 6px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    min-width: 100px;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+#dataTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#dataTable tbody {
+    display: block;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+#dataTable thead,
+#dataTable tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+/* 计算区域样式 */
+.calculate-section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 深度统计样式 */
+.depth-statistics {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hole-statistic-card {
+    background-color: #3498db;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hole-header {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.hole-number {
+    margin-left: 5px;
+}
+
+.hole-stats p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.hole-stats p span.number {
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.hole-stats p span.number-primary {
+    font-weight: bold;
+    background-color: #5c6ee4;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.hole-stats p span.number-secondary {
+    font-weight: bold;
+    background-color: #4f5a6b;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.hole-stats p:first-child {
+    font-weight: bold;
+}
+
+
+
+.calculate-result {
+    padding: 0;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 图表区域样式 */
+.chart-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container {
+    position: relative;
+    flex: 1;
+    margin-bottom: 20px;
+    min-height: 400px;
+    width: 100%;
+}
+
+
+
+
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .page-layout {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .left-section,
+    .right-section {
+        flex: 1;
+        max-width: 100%;
+        min-width: 100%;
+        gap: 15px;
+        min-height: 600px;
+    }
+    
+    .section-container {
+        padding: 15px;
+    }
+    
+    .chart-container-wrapper {
+        min-height: 400px;
+    }
+    
+    .preview-container {
+        min-height: 450px;
+    }
+    
+    .chart-container {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        min-height: 600px;
+    }
+    
+    .drop-area {
+        padding: 20px;
+    }
+    
+    .chart-container {
+        height: 300px;
+    }
+    
+    .upload-buttons,
+    .hole-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .upload-buttons button,
+    .hole-buttons button {
+        margin-bottom: 10px;
+        margin-right: 0;
+        max-width: none;
+    }
+}
